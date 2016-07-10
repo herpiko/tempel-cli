@@ -1,12 +1,11 @@
 #!/usr/bin/python
 
-import urllib
-import urllib2
+import urllib, urllib2
 import sys, getopt
 
 def bantuan():
     string = """
-    Usage: tempel [options]
+    Usage: tempel.py [options]
     Options:
 
         -h, --help             output usage information
@@ -14,7 +13,7 @@ def bantuan():
         -l, --language <lang>  Set language
         -t, --text <text>      From text
     
-    tempel -l <lang> -t <text>"""
+    tempel.py -l <lang> -t <text>"""
     print string
 
 def main(argv):
@@ -41,8 +40,8 @@ def main(argv):
     }
     data = urllib.urlencode(values)
     print data
-    #response = urllib2.urlopen(urllib2.Request(tempel,data)) 
-    #print 'URL     :', response.geturl()
+    response = urllib2.urlopen(urllib2.Request(tempel,data)) 
+    print 'URL     :', response.geturl()
 
 if __name__ == "__main__":
    main(sys.argv[1:])
