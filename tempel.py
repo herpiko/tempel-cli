@@ -4,16 +4,29 @@ import urllib
 import urllib2
 import sys, getopt
 
+def bantuan():
+    string = """
+    Usage: tempel [options]
+    Options:
+
+        -h, --help             output usage information
+        -V, --version          output the version number
+        -l, --language <lang>  Set language
+        -t, --text <text>      From text
+    
+    tempel -l <lang> -t <text>"""
+    print string
+
 def main(argv):
 
     try:
         opts, args = getopt.getopt(argv,"h:l:t:",["language=","text="])
     except getopt.GetoptError:
-        print 'tempel.py -l <lang> -t <text>'
+        bantuan()
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print 'tempel.py -l <lang> -t <text>'
+            bantuan()
             sys.exit()
         elif opt in ("-l", "--language"):
             lang = arg
@@ -27,9 +40,9 @@ def main(argv):
       'content' : text
     }
     data = urllib.urlencode(values)
-    #print data
-    response = urllib2.urlopen(urllib2.Request(tempel,data)) 
-    print 'URL     :', response.geturl()
+    print data
+    #response = urllib2.urlopen(urllib2.Request(tempel,data)) 
+    #print 'URL     :', response.geturl()
 
 if __name__ == "__main__":
    main(sys.argv[1:])
