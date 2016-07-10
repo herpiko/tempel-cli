@@ -27,8 +27,8 @@ def main(argv):
       'content' : text
     }
     data = urllib.urlencode(values)
-    print data
-    #response = urllib2.urlopen(urllib2.Request(tempel,data)) 
+    #print data
+    response = urllib2.urlopen(urllib2.Request(tempel,data)) 
     print 'URL     :', response.geturl()
 
 if __name__ == "__main__":
